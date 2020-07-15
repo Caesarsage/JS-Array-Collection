@@ -21,8 +21,12 @@ let decNums = Array.of(4000,2000,5000);
 
 //use of spreading
 let total = Array.of( addYealyTotal(...octNums), addYealyTotal(...novNums), addYealyTotal(...decNums));
-alert( addYealyTotal(...total,9, 3));
 
+//Array find and findIndex
+function findOver1000(){
+    let firstThousand = monthlySales.findIndex(element => element > 1000);
+    alert(firstThousand);
+}
 
 let yearlyTotal =  addYealyTotal(...monthlySales);
 yearlyLabel.innerHTML = "s" + yearlyTotal;
