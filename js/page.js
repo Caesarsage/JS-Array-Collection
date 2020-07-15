@@ -28,6 +28,12 @@ function findOver1000(){
     alert(firstThousand);
 }
 
+//Array fill
+function resetNum(){
+    monthlySales.fill(0);
+    monthlySalesChart.update();
+}
+
 let yearlyTotal =  addYealyTotal(...monthlySales);
 yearlyLabel.innerHTML = "s" + yearlyTotal;
 // Bar
