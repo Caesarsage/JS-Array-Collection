@@ -1,16 +1,39 @@
 // Charts
 let ctx = document.getElementById('monthlySales').getContext('2d');
 let pieCtx = document.getElementById('deptSales').getContext('2d');
+let yearlyLabel = document.getElementById('yearlyTotal');
+
+//create an array with Array.of()
+let monthlySales = Array.of(500,9000,3000);
+let monthlyLabel = Array.of('Oct', 'Nov', 'Dec');
 
 
+let deptSales = Array.of(12,9,3);
+let deptLabels = Array.of('Hiking','Running', 'Hunting');
+
+function addYealyTotal(a,b,c) {
+    return a+b+c;
+}
+
+let octNums = Array.of(500,1000,9000);
+let novNums = Array.of(1100,2000,9000);
+let decNums = Array.of(4000,2000,5000);
+
+//use of spreading
+let total = Array.of( addYealyTotal(...octNums), addYealyTotal(...novNums), addYealyTotal(...decNums));
+alert( addYealyTotal(...total,9, 3));
+
+
+let yearlyTotal =  addYealyTotal(...monthlySales);
+yearlyLabel.innerHTML = "s" + yearlyTotal;
 // Bar
 var monthlySalesChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Hiking', 'Running', 'Hunting'],
+        labels: monthlyLabel,
         datasets: [{
             label: '# of Sales',
-            data:[12,19,3],
+            data: monthlySales,
             backgroundColor: [
                 'rgba(238, 184, 104, 1)',
                 'rgba(75, 166, 223, 1)',
@@ -34,10 +57,10 @@ var monthlySalesChart = new Chart(ctx, {
 var deptSalesChart = new Chart(pieCtx, {
     type: 'pie',
     data: {
-        labels: ['Hiking', 'Running', 'Hunting'],
+        labels: deptLabels,
         datasets: [{
             label: '# of Sales',
-            data: [12,9,3],
+            data: deptSales,
             backgroundColor: [
                 'rgba(238, 184, 104, 1)',
                 'rgba(75, 166, 223, 1)',
