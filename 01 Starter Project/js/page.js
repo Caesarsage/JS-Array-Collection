@@ -8,10 +8,21 @@ let yearlyLabel = document.getElementById('yearlyTotal');
 let newAmount = document.getElementById('itemAmount');
 let newMonth = document.getElementById('monthId');
 
+let hikingRadio = document.getElementById('hiking');
+let runningRadio = document.getElementById('running');
+let huntingRadio = document.getElementById('hunting');
+
 let yearlyTotal = 0;
 
 const monthlySales = new Set();
 const monthlyLabels = new Set();
+
+const categories = new WeakSet();
+
+let hiking = {category: 'Hiking'}
+let running = {category: 'Running'}
+let hunting = {category: 'Hunting'}
+
 
 //couples of ways to add to set
 // //pass in value inside the st
@@ -45,6 +56,19 @@ function addSale() {
     //update chart
     monthlySalesChart.data.labels = Array.from(monthlyLabels);
     monthlySalesChart.update();
+
+    //check if the radi btn has been selected
+    if (hikingRadio.checked) {
+        categories.add(hiking);
+    }else if (runningRadio.checked) {
+        categories.add(running);
+    }else if (huntingRadio.checked) {
+        categories.add(hunting);
+    }else{
+        //do somthing
+    }
+    console.log(categories);
+    
 }
 
 //delete from a set
