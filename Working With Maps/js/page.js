@@ -11,13 +11,24 @@ let huntingRadio = document.getElementById('hunting');
 // Monthly Totals
 var yearlyTotal = 0;
 
+const monthlySales = new Map();
+
 // Add Sales
 function addSale(){
-	
+    monthlySales.set(newMonth.value, newAmount.value);
+    console.log(monthlySales);
+    
 }
-
+//find a value from map
 function findSale(){
-
+    // console.log(monthlySales.get(1));
+    // console.log(monthlySales.has(1));
+    
+}
+//delete 
+function deleteVal() {
+    // monthlySales.delete(1);
+    // console.log(monthlySales);
 }
 
 // Bar chart
