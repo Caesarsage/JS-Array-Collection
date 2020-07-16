@@ -27,9 +27,24 @@ function addSale() {
     monthlySales.add(parseInt(newAmount.value));
     monthlyLabels.add(newMonth.value);
     
-    for (const total of monthlySales) {
-        console.log(total);
+    yearlyTotal = 0 ;
+
+    monthlySalesChart.data.datasets.forEach((dataset)=>{
+        dataset.data.push = [];
+    })
+
+    for (let amount of monthlySales) {
+        yearlyTotal = amount + yearlyTotal;
+        yearlyLabel.innerHTML = yearlyTotal;
+
+        monthlySalesChart.data.datasets.forEach((dataset)=>{
+            dataset.data.push(amount);
+        })
     }
+
+    //update chart
+    monthlySalesChart.data.labels = Array.from(monthlyLabels);
+    monthlySalesChart.update();
 }
 
 //delete from a set
@@ -41,39 +56,35 @@ function deleteVal(){
 
 //iterating through a set
 function addTotal(){
-    yearlyTotal = 0 ;
-    for (const amount of monthlySales) {
-        yearlyTotal = amount + yearlyTotal;
-        yearlyLabel.innerHTML = yearlyTotal;
-    }
+  
 }
 
-// // Bar chart
-// var monthlySalesChart = new Chart(ctx, {
-//     type: 'bar',
-//     data: {
-//         labels: monthlyLabels,
-//         datasets: [{
-//             label: '# of Sales',
-//             data: monthlySales,
-//             backgroundColor: [
-//                 'rgba(238, 184, 104, 1)',
-//                 'rgba(75, 166, 223, 1)',
-//                 'rgba(239, 118, 122, 1)',
-//             ],
-//             borderWidth: 0
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             yAxes: [{
-//                 ticks: {
-//                     beginAtZero: true
-//                 }
-//             }]
-//         }
-//     }
-// });
+// Bar chart
+var monthlySalesChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [],
+        datasets: [{
+            label: '# of Sales',
+            data: [],
+            backgroundColor: [
+                'rgba(238, 184, 104, 1)',
+                'rgba(75, 166, 223, 1)',
+                'rgba(239, 118, 122, 1)',
+            ],
+             borderWidth: 0
+         }]
+     },
+     options: {
+         scales: {
+             yAxes: [{
+                 ticks: {
+                     beginAtZero: true
+                 }
+             }]
+         }
+     }
+ });
 
 // // Pie Chart
 // var deptSalesChart = new Chart(pieCtx, {
