@@ -4,23 +4,27 @@ let pieCtx = document.getElementById('deptSales').getContext('2d');
 let yearlyLabel = document.getElementById('yearlyTotal');
 
 //create an array with Array.of()
-let monthlySales = Array.of(500,9000,3000);
+let monthlySales = Array.of(500,9000,3000, 4000);
 let monthlyLabel = Array.of('Oct', 'Nov', 'Dec');
 
 
 let deptSales = Array.of(12,9,3);
 let deptLabels = Array.of('Hiking','Running', 'Hunting');
 
-function addYealyTotal(a,b,c) {
-    return a+b+c;
+let yearlyTotal = 0;
+
+function addYealyTotal(x) {
+    yearlyTotal = x + yearlyTotal;
 }
+
+monthlySales.forEach(addYealyTotal);
 
 let octNums = Array.of(500,1000,9000);
 let novNums = Array.of(1100,2000,9000);
 let decNums = Array.of(4000,2000,5000);
 
 //use of spreading
-let total = Array.of( addYealyTotal(...octNums), addYealyTotal(...novNums), addYealyTotal(...decNums));
+// let total = Array.of( addYealyTotal(...octNums), addYealyTotal(...novNums), addYealyTotal(...decNums));
 
 //Array find and findIndex
 function findOver1000(){
@@ -34,7 +38,6 @@ function resetNum(){
     monthlySalesChart.update();
 }
 
-let yearlyTotal =  addYealyTotal(...monthlySales);
 yearlyLabel.innerHTML = "s" + yearlyTotal;
 // Bar
 var monthlySalesChart = new Chart(ctx, {
