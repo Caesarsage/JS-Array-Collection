@@ -23,18 +23,29 @@ const monthlyLabels = new Set();
 
 function addSale() {
     //adding to a set
-    monthlySales.add(newAmount.value);
+    //parseInt convert string to a interger
+    monthlySales.add(parseInt(newAmount.value));
     monthlyLabels.add(newMonth.value);
-    //getting the sales length(size)
-    alert('You have entered in '+ monthlySales.size + ' sales');
-    console.log(monthlySales);   
+    
+    for (const total of monthlySales) {
+        console.log(total);
+    }
 }
 
 //delete from a set
 function deleteVal(){
-    monthlySales.delete('1500');
-    console.log(monthlySales)  ;
-    
+    monthlySales.forEach((value1, value2, monthlySales) => {
+        alert(value1);
+    })
+}
+
+//iterating through a set
+function addTotal(){
+    yearlyTotal = 0 ;
+    for (const amount of monthlySales) {
+        yearlyTotal = amount + yearlyTotal;
+        yearlyLabel.innerHTML = yearlyTotal;
+    }
 }
 
 // // Bar chart
