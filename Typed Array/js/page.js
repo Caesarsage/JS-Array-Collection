@@ -6,7 +6,13 @@ let hikingRadio = document.getElementById('hiking');
 let runningRadio = document.getElementById('running');
 let huntingRadio = document.getElementById('hunting');
 
-// Code goes here
+// Create Array buffer with 16byte
+let testBuffer = new ArrayBuffer(16);
+
+// You can Test for byte length
+    // if (testBuffer.byteLength == 16) {
+    //     alert('Yes');
+    // }
 
 // Add Sales
 function addSale(){
